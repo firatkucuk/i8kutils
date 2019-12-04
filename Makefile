@@ -18,7 +18,7 @@ LDFLAGS:=-Wl,-Bsymbolic-functions -Wl,-z,relro
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
-all: i8kctl dell-bios-fan-control
+all: dell-bios-fan-control i8kctl
 
 i8kctl: i8kctl.c i8k.h i8kctl.h
 
