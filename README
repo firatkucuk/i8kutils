@@ -1,16 +1,25 @@
+I8KUTILS v1.44
+
 This is a slightly modifed version of the original 'i8kutils' to make the tool run on a modern Linux distribution.
 
 - Merged 'dell-bios-fan-control' into the code and adjusted the Makefile and systemd service unit.
-- Added 'install' target into the Makefile. Run 'make && make install' to install, enable and start the application.
+- Added 'install' target into the Makefile.
 - Kernel pause has been resolved (credit goes to x-hgg-x@github).
 - Added possibility to add more temperature configurations (credit goes to x-hgg-x@github).
 - Disabled setting fan speed before probing CPU temperature (credit goes to x-hgg-x@github).
 
-Run the following commands to build and install the application:
+I have packaged the application for Ubuntu. Run the following commands to install it. It should be enabled and running soon 
+after the installation:
 
-apt update && apt upgrade
-apt install build-essential tcl tclx tk acpi acpitool
-make && make install
+git clone https://github.com/JulAlx/i8kutils.git
+cd i8kutils/binary-package
+sudo apt install ./i8kmon-dell_1.44_amd64.deb
+
+If you'd like to build the application from scratch, then run the following commands to compile and install the application:
+
+sudo apt update && sudo apt upgrade
+sudo apt install build-essential tcl tclx tk acpi acpitool
+make && sudo make install
 
 
 The remainder of the instructions remains as is.
