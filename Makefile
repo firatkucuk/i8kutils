@@ -43,4 +43,5 @@ install:
 	cp debian/i8kmon.service /usr/lib/systemd/system/
 	systemctl daemon-reload
 	systemctl enable i8kmon.service
+	systemctl restart i8kmon.service
 	
