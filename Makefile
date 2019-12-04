@@ -41,6 +41,8 @@ install:
 	cp i8kmon.conf /etc/
 	cp dell-smm-hwmon.conf /etc/modprobe.d/
 	cp debian/i8kmon.service /usr/lib/systemd/system/
+	modprobe dell-smm-hwmon restricted=0 force=1
+	modprobe i8k force=1
 	systemctl daemon-reload
 	systemctl enable i8kmon.service
 	systemctl restart i8kmon.service
