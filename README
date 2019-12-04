@@ -6,7 +6,15 @@ This is a slightly modifed version of the original 'i8kutils' to make the tool r
 - Added possibility to add more temperature configurations (credit goes to x-hgg-x@github).
 - Disabled setting of fan speed before probing CPU temperature (credit goes to x-hgg-x@github).
 
+Run the following commands to build and install the application:
+
+apt update && apt upgrade
+apt install build-essential tcl tclx tk acpi acpitool
+make && make install
+
+
 The remainder of the instructions remains as is.
+
 
 
 I8KUTILS
