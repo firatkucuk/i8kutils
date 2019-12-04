@@ -4,7 +4,7 @@ This is a slightly modifed version of the original 'i8kutils' to make the tool r
 - Added 'install' target into the Makefile. Run 'make && make install' to install, enable and start the application.
 - Kernel pause has been resolved (credit goes to x-hgg-x@github).
 - Added possibility to add more temperature configurations (credit goes to x-hgg-x@github).
-- Disabled setting of fan speed before probing CPU temperature (credit goes to x-hgg-x@github).
+- Disabled setting fan speed before probing CPU temperature (credit goes to x-hgg-x@github).
 
 Run the following commands to build and install the application:
 
