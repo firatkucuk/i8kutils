@@ -1,12 +1,14 @@
 This is a slightly modifed version of the original 'i8kutils' to make the tool run on a modern Linux distribution.
 
-- Merged 'dell-bios-fan-control' into the code and adjusted the Makefile.
+- Merged 'dell-bios-fan-control' into the code and adjusted the Makefile and systemd service unit.
+- Added 'install' target into the Makefile. Run 'make && make install' to install, enable and start the application.
 - Kernel pause has been resolved (credit goes to x-hgg-x@github).
 - Added possibility to add more temperature configurations (credit goes to x-hgg-x@github).
 - Disabled setting of fan speed before probing CPU temperature (credit goes to x-hgg-x@github).
-- 
 
-I8KUTILS
+The remainder of the instructions remains as is.
+
+<b>I8KUTILS</b>
 ========
 
 OVERVIEW
