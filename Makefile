@@ -34,3 +34,13 @@ dell-bios-fan-control: Makefile
 
 clean:
 	rm -f i8kctl probe_i8k_calls_time *.o dell-bios-fan-control/dell-bios-fan-control
+
+install:
+	cp -t /usr/bin/ i8kmon i8kfan i8ctl
+	cp dell-bios-fan-control/dell-bios-fan-control /usr/local/bin/
+	cp i8kmon.conf /etc/
+	cp dell-smm-hwmon.conf /etc/modprobe.d/
+	cp debian/i8kmon.service /usr/lib/systemd/system/
+	systemctl daemon-reload
+	systemctl enable i8kmon.service
+	
