@@ -10,23 +10,15 @@ Allows to control the fans by bios or i8kctl utils.
 
 To enable SMBIOS control:
 
-<pre>
-dell-bios-fan-control 1
-</pre>
+  dell-bios-fan-control 1
 
 To disable SMBIOS control:
 
-<pre>
-dell-bios-fan-control 0
-</pre>
+  dell-bios-fan-control 0
 
 After disabling SMBIOS control of fans you can set fan speed by i8kctl:
 
-<pre>
-i8kctl fan 1 1
-</pre>
-
-  
+ i8kctl fan 1 1
 
 ### Caveats
 
