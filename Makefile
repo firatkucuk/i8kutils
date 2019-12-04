@@ -29,15 +29,14 @@ probe_i8k_calls_time: i8kctl_DLIB.o probe_i8k_calls_time.c
 	$(CC) $(CFLAGS) -Wall -c -g -DLIB probe_i8k_calls_time.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -o probe_i8k_calls_time i8kctl_DLIB.o probe_i8k_calls_time.o
 
-dell-bios-fan-control:
-	(cd dell-bios-fan-control/ && make)
+dell-bios-fan-control: dell-bios-fan-control.c
+	$(CC) -o $@ $^
 
 clean:
-	rm -f i8kctl probe_i8k_calls_time *.o dell-bios-fan-control/dell-bios-fan-control
+	rm -f i8kctl probe_i8k_calls_time *.o dell-bios-fan-control
 
 install:
-	cp -t /usr/bin/ i8kmon i8kfan i8ctl
-	cp dell-bios-fan-control/dell-bios-fan-control /usr/local/bin/
+	cp -t /usr/bin/ i8kmon i8kfan i8ctl dell-bios-fan-control
 	cp i8kmon.conf /etc/
 	cp dell-smm-hwmon.conf /etc/modprobe.d/
 	cp debian/i8kmon.service /usr/lib/systemd/system/
@@ -46,4 +45,3 @@ install:
 	systemctl daemon-reload
 	systemctl enable i8kmon.service
 	systemctl restart i8kmon.service
-	
