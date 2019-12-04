@@ -30,7 +30,7 @@ probe_i8k_calls_time: i8kctl_DLIB.o probe_i8k_calls_time.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -o probe_i8k_calls_time i8kctl_DLIB.o probe_i8k_calls_time.o
 
 dell-bios-fan-control: Makefile
-	$(MAKE) -C dell-bios-fan-control
+	$(MAKE) -C dell-bios-fan-control/
 
 clean:
 	rm -f i8kctl probe_i8k_calls_time *.o dell-bios-fan-control/dell-bios-fan-control
