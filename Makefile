@@ -18,7 +18,7 @@ LDFLAGS:=-Wl,-Bsymbolic-functions -Wl,-z,relro
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
-all: i8kctl
+all: i8kctl dell-bios-fan-control
 
 i8kctl: i8kctl.c i8k.h i8kctl.h
 
@@ -29,7 +29,8 @@ probe_i8k_calls_time: i8kctl_DLIB.o probe_i8k_calls_time.c
 	$(CC) $(CFLAGS) -Wall -c -g -DLIB probe_i8k_calls_time.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -o probe_i8k_calls_time i8kctl_DLIB.o probe_i8k_calls_time.o
 
-$(MAKE) -C dell-bios-fan-control
+dell-bios-fan-control: Makefile
+	$(MAKE) -C dell-bios-fan-control
 
 clean:
-	rm -f i8kctl probe_i8k_calls_time *.o
+	rm -f i8kctl probe_i8k_calls_time *.o dell-bios-fan-control/dell-bios-fan-control
