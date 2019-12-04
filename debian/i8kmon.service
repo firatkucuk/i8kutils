@@ -4,11 +4,10 @@ Documentation=man:i8kmon
 ConditionPathExists=/proc/i8k
 
 [Service]
-ExecStartPre=/usr/local/bin/dell-bios-fan-control/dell-bios-fan-control 0
-ExecStopPost=/usr/local/bin/dell-bios-fan-control/dell-bios-fan-control 1
+ExecStartPre=/usr/local/bin/dell-bios-fan-control 0
+ExecStopPost=/usr/local/bin/dell-bios-fan-control 1
 ExecStart=/usr/bin/i8kmon --nouserconfig
-Restart=always
-RestartSec=5
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
