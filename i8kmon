@@ -19,7 +19,7 @@ array set config {
     sysconfig    /etc/i8kmon.conf
     userconfig   ~/.i8kmon
     i8kfan       /usr/bin/i8kfan
-    acpi         "acpi"
+    acpi         "acpi -a"
     use_conf     1
     verbose      0
     timeout      2
@@ -331,8 +331,11 @@ proc probe_fan_speed {} {
     set status(leftspeed) "0 $lspeed1 $lspeed2 $lspeed3"
     set status(rightspeed) "0 $rspeed1 $rspeed2 $rspeed3"
 
+    # lets go back to the initial state
+    exec $config(i8kfan) 0 0
+
     if {$config(verbose) > 0} {
-        puts "Probed fan speeds are left=$status(leftspeed), right=status(rightspeed)"
+        puts "Probed fan speeds are left=$status(leftspeed), right=$status(rightspeed)"
     }
 }
 

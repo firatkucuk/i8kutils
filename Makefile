@@ -33,7 +33,7 @@ dell-bios-fan-control: dell-bios-fan-control.c
 	$(CC) -o $@ $^
 
 clean:
-	rm -f i8kctl probe_i8k_calls_time dell-bios-fan-control
+	rm -f i8kctl probe_i8k_calls_time dell-bios-fan-control *.o
 
 install: dell-bios-fan-control i8kctl
 	cp -t /usr/bin/ i8kmon i8kfan i8kctl dell-bios-fan-control
@@ -54,13 +54,3 @@ uninstall:
 	rm -f /etc/modprobe.d/dell-smm-hwmon.conf
 	rm -f /etc/i8kmon.conf
 	rm -f /usr/bin/i8kmon /usr/bin/i8kfan /usr/bin/i8ctl /usr/bin/dell-bios-fan-control
-	# systemctl stop i8kmon.service
-	# cp -t /usr/bin/ i8kmon i8kfan i8ctl dell-bios-fan-control
-	# cp i8kmon.conf /etc/
-	# cp dell-smm-hwmon.conf /etc/modprobe.d/
-	# cp debian/i8kmon.service /usr/lib/systemd/system/
-	# modprobe dell-smm-hwmon restricted=0 force=1
-	# modprobe i8k force=1
-	# systemctl daemon-reload
-	# systemctl enable i8kmon.service
-
