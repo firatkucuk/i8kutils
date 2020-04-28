@@ -1,5 +1,7 @@
 # compiled asset
 i8kctl
+dell-bios-fan-control
+probe_i8k_calls_time
 
 # vim swap files
 /**/*.swp

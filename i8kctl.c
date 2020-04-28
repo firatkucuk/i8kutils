@@ -77,7 +77,6 @@ i8k_get_bios_version()
                 // '/proc/i8k' is from SMM data and DMI table.
                 return strdup(i8k_proc_bios_version);
             }
-
         }
     }
 
@@ -100,7 +99,7 @@ i8k_get_machine_id()
     int rc;
 
     if ((rc=ioctl(i8k_fd, I8K_MACHINE_ID, &args)) < 0) {
-	return NULL;
+	    return NULL;
     }
 
     return strdup(args);
@@ -114,8 +113,9 @@ i8k_set_fan(int fan, int speed)
 
     args[0] = fan;
     args[1] = speed;
+
     if ((rc=ioctl(i8k_fd, I8K_SET_FAN, &args)) < 0) {
-	return rc;
+	    return rc;
     }
 
     return args[0];
@@ -128,8 +128,9 @@ i8k_get_fan_status(int fan)
     int rc;
 
     args[0] = fan;
+
     if ((rc=ioctl(i8k_fd, I8K_GET_FAN, &args)) < 0) {
-	return rc;
+	    return rc;
     }
 
     return args[0];
@@ -143,7 +144,7 @@ i8k_get_fan_speed(int fan)
 
     args[0] = fan;
     if ((rc=ioctl(i8k_fd, I8K_GET_SPEED, &args)) < 0) {
-	return rc;
+	    return rc;
     }
 
     return args[0];
@@ -156,7 +157,7 @@ i8k_get_cpu_temp()
     int rc;
 
     if ((rc=ioctl(i8k_fd, I8K_GET_TEMP, &args)) < 0) {
-	return rc;
+	    return rc;
     }
 
     return args[0];
@@ -169,7 +170,7 @@ i8k_get_power_status()
     int rc;
 
     if ((rc=ioctl(i8k_fd, I8K_POWER_STATUS, &args)) < 0) {
-	return rc;
+	    return rc;
     }
 
     return args[0];
@@ -182,7 +183,7 @@ i8k_get_fn_status()
     int rc;
 
     if ((rc=ioctl(i8k_fd, I8K_FN_STATUS, &args)) < 0) {
-	return rc;
+	    return rc;
     }
 
     return args[0];
@@ -194,18 +195,19 @@ fan(int argc, char **argv)
     int left, right;
 
     if ((argc > 1) && isdigit(argv[1][0])) {
-	left = i8k_set_fan(I8K_FAN_LEFT, atoi(argv[1]));
+	    left = i8k_set_fan(I8K_FAN_LEFT, atoi(argv[1]));
     } else {
-	left = i8k_get_fan_status(I8K_FAN_LEFT);
+	    left = i8k_get_fan_status(I8K_FAN_LEFT);
     }
 
     if ((argc > 2) && isdigit(argv[2][0])) {
-	right = i8k_set_fan(I8K_FAN_RIGHT, atoi(argv[2]));
+	    right = i8k_set_fan(I8K_FAN_RIGHT, atoi(argv[2]));
     } else {
-	right = i8k_get_fan_status(I8K_FAN_RIGHT);
+	    right = i8k_get_fan_status(I8K_FAN_RIGHT);
     }
 
     printf("%d %d\n", left, right);
+
     return 0;
 }
 
@@ -218,6 +220,7 @@ fan_speed(int argc, char **argv)
     right = i8k_get_fan_speed(I8K_FAN_RIGHT);
 
     printf("%d %d\n", left, right);
+
     return 0;
 }
 
@@ -227,10 +230,11 @@ bios_version()
     char *version;
 
     if ((version=i8k_get_bios_version()) == NULL) {
-	version = "?";
+	    version = "?";
     }
 
     printf("%s\n", version);
+
     return 0;
 }
 
@@ -240,10 +244,11 @@ machine_id()
     char *machine_id;
 
     if ((machine_id=i8k_get_machine_id()) == NULL) {
-	machine_id = "?";
+	    machine_id = "?";
     }
 
     printf("%s\n", machine_id);
+
     return 0;
 }
 
@@ -341,13 +346,14 @@ int
 main(int argc, char **argv)
 {
     if (argc >= 2) {
-	if ((strcmp(argv[1],"-h")==0) || (strcmp(argv[1],"--help")==0)) {
-	    usage();
-	    exit(0);
-	}
+        if ((strcmp(argv[1],"-h")==0) || (strcmp(argv[1],"--help")==0)) {
+            usage();
+            exit(0);
+        }
     }
 
     i8k_fd = open(I8K_PROC, O_RDONLY);
+
     if (i8k_fd < 0) {
         perror("can't open " I8K_PROC);
         exit(-1);
